@@ -1,0 +1,18 @@
+.image {
+    width: 100px;
+    height: 180px;
+}
+
+.card {
+    width: 200px;
+    height: 400px;
+    box-shadow: 1px 4px 3px lightgray;
+    border-radius: 10px;
+    margin: 5px 3px;
+}
+
+.card:hover {
+    box-shadow: 1px 4px 3px gray;
+    transition: all 0.5s;
+    cursor: pointer;
+}
