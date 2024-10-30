@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { setSelectedProduct } from '../redux/slices/productSlice'
 import { FaPlus, FaMinus } from 'react-icons/fa'
+import { addToBasket } from '../redux/slices/basketSlice'
 
 function ProductDetails() {
     const { id } = useParams()
@@ -15,6 +16,11 @@ function ProductDetails() {
     }
     const decrement = () => {
         if (count > 1) { setCount(count - 1) }
+    }
+
+    const addBasket = () => {
+        const payload = { id, count, price, image, title, description }
+        dispatch(addToBasket(payload))
     }
 
     const dispatch = useDispatch()
@@ -36,7 +42,7 @@ function ProductDetails() {
             <img src={image} alt="product image" style={{ width: '120px' }} />
             <h2>$ {price} </h2>
             <div><FaPlus onClick={increment} /> {count} <FaMinus onClick={decrement} />
-                <button style={{ margin: '0px 5px', padding: '4px', borderRadius: '10px' }}>Sepete Ekle</button>
+                <button onClick={addBasket} style={{ margin: '0px 5px', padding: '4px', borderRadius: '10px' }}>Sepete Ekle</button>
             </div>
             <h3>{title}</h3>
             <p>{description}</p>

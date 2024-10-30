@@ -3,11 +3,15 @@ import '../css/header.css'
 import { CiShoppingBasket, CiLight } from 'react-icons/ci'
 import { FaMoon } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import Badge from '@mui/material/Badge';
+import { useSelector } from 'react-redux'
 
 function Header() {
 
     const [theme, setTheme] = useState(true);
     const navigate = useNavigate();
+
+    const { products } = useSelector(store => store.basket)
 
     const changeTheme = () => {
         const root = document.getElementById("root");
@@ -30,7 +34,10 @@ function Header() {
                 <input type="text" placeholder='Ara...' />
                 <div >
                     {theme ? <FaMoon className='icon' onClick={changeTheme} /> : <CiLight className='icon' onClick={changeTheme} />}
-                    <CiShoppingBasket className='icon' />
+                    <Badge badgeContent={products.length} color="error">
+                        <CiShoppingBasket className='icon' />
+                    </Badge>
+
                 </div>
             </div>
         </div>
