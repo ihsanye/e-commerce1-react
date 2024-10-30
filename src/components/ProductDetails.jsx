@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { setSelectedProduct } from '../redux/slices/productSlice'
 import { FaPlus, FaMinus } from 'react-icons/fa'
-import { addToBasket } from '../redux/slices/basketSlice'
+import { addToBasket, calculateBasket } from '../redux/slices/basketSlice'
 
 function ProductDetails() {
     const { id } = useParams()
@@ -20,7 +20,8 @@ function ProductDetails() {
 
     const addBasket = () => {
         const payload = { id, count, price, image, title, description }
-        dispatch(addToBasket(payload))
+        dispatch(addToBasket(payload));
+        dispatch(calculateBasket())
     }
 
     const dispatch = useDispatch()
