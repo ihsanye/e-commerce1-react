@@ -1,6 +1,10 @@
+body {
+    height: 100%;
+}
+
 .image {
+    height: 150px;
     width: 100px;
-    height: 180px;
 }
 
 .card {

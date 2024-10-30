@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import '../css/header.css'
 import { CiShoppingBasket, CiLight } from 'react-icons/ci'
 import { FaMoon } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
 
     const [theme, setTheme] = useState(true);
+    const navigate = useNavigate();
 
     const changeTheme = () => {
         const root = document.getElementById("root");
@@ -21,7 +23,7 @@ function Header() {
 
     return (
         <div className='header-container'>
-            <div><img id='logo' src="./src/images/logo.png" alt="CommerceLogo" />
+            <div onClick={() => navigate('/')}><img id='logo' src="./src/images/logo.png" alt="CommerceLogo" />
                 <p>EAGLE AS</p>
             </div>
             <div className='flex-row'>
@@ -31,7 +33,6 @@ function Header() {
                     <CiShoppingBasket className='icon' />
                 </div>
             </div>
-
         </div>
     )
 }
